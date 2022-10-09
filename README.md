@@ -1,6 +1,10 @@
 Install:
-
 composer install
 
-npm install
+To create the symbolic link: 
+http;//yourdomain.com/symlink
+ 
+ 
+
+
 
