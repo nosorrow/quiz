@@ -84,8 +84,10 @@
                           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
                           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <a href="{{Storage::url($file->path)}}">
-                              {{$file->name}} <br>
-                              <span class="text-xs">{{$file->path}}</span>
+                              <span class="font-bold">
+                                {{$file->name}}
+                              </span> <br>
+                              <span class="text-xs text-gray-600">{{$file->path}}</span>
                             </a>
                           </td>
                           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -94,7 +96,11 @@
                           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {{$file->created_at->format('d.n.Y')}}
                           </td>
-                          <td class="flex justify-around text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <td class="flex text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <a class="button-success mr-2" style="font-size: 1rem"
+                               href="{{Storage::url($file->path)}}">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
                             @can('isAdmin')
                               @php
                                 $file_hash = last(explode("/",$file->path))
@@ -107,10 +113,6 @@
                                 </button>
                               </form>
                             @endcan
-                            <a class="button-success" style="font-size: 1rem"
-                               href="{{Storage::url($file->path)}}">
-                                <i class="fa-regular fa-eye"></i>
-                            </a>
                           </td>
                         </tr>
                     @endforeach
