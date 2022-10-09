@@ -12,7 +12,7 @@ class QuizSolveController extends Controller
 {
     public function showResult()
     {
-        return view('quizzes-solve-rezult');
+        return view('quizzes-solve-result');
     }
 
     public function solve(Request $request, $id)
@@ -23,15 +23,12 @@ class QuizSolveController extends Controller
 //                17 => "29"
 //                18 => "31"
 //              ];
-        // Session [correct[] wrong[]
-
 
         $correct = 0;
         $wrong = 0;
 
         $answers = $request->input('ans');
         $total = count($answers);
-//        $questionsId = array_keys((array)$answers);
 
         foreach ($answers as $key=>$answer) {
 
@@ -63,7 +60,6 @@ class QuizSolveController extends Controller
 
     public function history($id)
     {
-
         $query = "
             SELECT users.name as user_name, histories.total, histories.score,
                 histories.created_at, quizzes.title 
@@ -73,8 +69,6 @@ class QuizSolveController extends Controller
                 WHERE quizzes.id = ?;";
 
         $quizzes = DB::select($query, [$id]);//->get();
-
-     //   dd($quizzes);
 
         return view('quizzes-history', [
            'quizzes'=>$quizzes
