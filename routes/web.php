@@ -5,6 +5,7 @@ use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\QuizSolveController;
 use App\Http\Controllers\QuizzesController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,5 +51,8 @@ Route::resource('quizzes', QuizzesController::class)
 Route::resource('questions', QuestionsController::class)
     ->middleware(['auth', 'verified']);
 
+Route::get('symlink', function (){
+    Artisan::call('storage:link');
+});
 
 require __DIR__.'/auth.php';
