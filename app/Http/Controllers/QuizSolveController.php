@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\History;
 use App\Models\QuestionOption;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 
 class QuizSolveController extends Controller
@@ -59,5 +60,12 @@ class QuizSolveController extends Controller
 
     }
 
+    public function history($id)
+    {
+        $quizzes = Quiz::find($id);
 
+        return view('quizzes-history', [
+           'quiz'=>$quizzes
+        ]);
+    }
 }

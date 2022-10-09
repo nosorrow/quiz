@@ -40,6 +40,9 @@ Route::get('/quiz/result', [QuizSolveController::class, 'showResult'])
     ->middleware(['auth', 'verified'])
     ->name('quiz.result');
 
+Route::get('/quiz/{quiz}/history', [QuizSolveController::class, 'history'])
+    ->middleware(['auth', 'verified'])
+    ->name('quiz.history');
 
 Route::resource('quizzes', QuizzesController::class)
     ->middleware(['auth', 'verified']);
