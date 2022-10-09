@@ -81,7 +81,9 @@
                     <tbody>
                     @foreach($files as $file)
                         <tr class="border-b">
-                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            {{$file->id}}
+                          </td>
                           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <a href="{{Storage::url($file->path)}}">
                               <span class="font-bold">
