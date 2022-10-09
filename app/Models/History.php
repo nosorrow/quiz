@@ -12,4 +12,14 @@ class History extends Model
     protected $fillable = [
         'user_id', 'quiz_id', 'total', 'score'
     ];
+
+    public function quiz()
+    {
+        return $this->belongsTo(Quiz::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

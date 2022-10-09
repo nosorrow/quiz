@@ -28,9 +28,6 @@
                     <thead class="border-b">
                     <tr>
                       <th scope="col" class="text-base font-medium text-blue-500 px-6 py-4 text-left">
-                        #
-                      </th>
-                      <th scope="col" class="text-base font-medium text-blue-500 px-6 py-4 text-left">
                         Тест
                       </th>
                       <th scope="col" class="text-base font-medium text-blue-500 px-6 py-4 text-left">
@@ -48,23 +45,25 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($quizzes as $quiz)
                         <tr class="border-b">
-                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {{$quiz->id}}
-                          </td>
                           <td class="text-base text-gray-900 font-bold px-6 py-4 whitespace-nowrap">
                             {{$quiz->title}}
                           </td>
                           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {{$quiz->user->name}}
+                            {{$quiz->user_name}}
                           </td>
                           <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {{$quiz->created_at->format('d.n.Y')}}
+                            {{$quiz->created_at}}
                           </td>
                           <td class="flex justify-start text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-
+                            {{$quiz->score}}
+                          </td>
+                          <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {{$quiz->total}}
                           </td>
                         </tr>
+                    @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -6,6 +6,7 @@ use App\Models\History;
 use App\Models\QuestionOption;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuizSolveController extends Controller
 {
@@ -62,10 +63,21 @@ class QuizSolveController extends Controller
 
     public function history($id)
     {
-        $quizzes = Quiz::find($id);
+
+        $query = "
+            SELECT users.name as user_name, histories.total, histories.score,
+                histories.created_at, quizzes.title 
+                FROM users JOIN histories 
+                ON histories.user_id = users.id
+                JOIN quizzes ON histories.quiz_id = quizzes.id
+                WHERE quizzes.id = ?;";
+
+        $quizzes = DB::select($query, [$id]);//->get();
+
+     //   dd($quizzes);
 
         return view('quizzes-history', [
-           'quiz'=>$quizzes
+           'quizzes'=>$quizzes
         ]);
     }
 }
